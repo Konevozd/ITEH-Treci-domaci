@@ -27,7 +27,7 @@ function App() {
   
   const showAnimals = async ()=>{
       const response = await fetch('https://api.api-ninjas.com/v1/animals?name=' + 
-      "all",{headers: {
+      "mon",{headers: {
         'X-Api-Key': 'lRkR8bVm5BodLko2WAj/VA==GRBgySyyrK29fIgV'
       }});
       const data  = await response.json();
