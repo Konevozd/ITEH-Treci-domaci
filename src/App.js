@@ -1,24 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import Research from './page/Research';
+import Rate from './page/Rate';
+import StartPage from './page/StartPage';
+import { useState, useEffect } from 'react';;
 
 function App() {
+
+  // const names = ["Cheetah", "Blue Iguana"];
+  // const[monkeys, setMonkeys] = useState([]);
+  const [animals, setAnimals] = useState([]); //empty array
+
+  // function loadAnimals() {
+  // for(let i = 0; i < names.length; i++) {
+    //console.log(names[i]);
+  //   const showMonkeys = async ()=>{
+  //     const response = await fetch('https://api.api-ninjas.com/v1/animals?name=' + 
+  //     "monkeys",{headers: {
+  //       'X-Api-Key': 'lRkR8bVm5BodLko2WAj/VA==GRBgySyyrK29fIgV'
+  //     }});
+  //     const data  = await response.json();
+  //     setMonkeys(data);
+  //     // console.log(data);
+  // }
+  
+  const showAnimals = async ()=>{
+      const response = await fetch('https://api.api-ninjas.com/v1/animals?name=' + 
+      "all",{headers: {
+        'X-Api-Key': 'lRkR8bVm5BodLko2WAj/VA==GRBgySyyrK29fIgV'
+      }});
+      const data  = await response.json();
+      setAnimals(data);
+      // console.log(data);
+  }
+
+  useEffect(()=>{
+    showAnimals();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path = "/" element = {<StartPage newData = {animals}/>}>  Pocetna strana </Route>
+        <Route path = "/search" element = {<Research file = {animals}/>}> </Route>
+        <Route path = "/rating" element = {<Rate/>}> </Route>
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }
