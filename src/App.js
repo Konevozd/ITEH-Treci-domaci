@@ -4,14 +4,14 @@ import NavBar from './components/NavBar';
 import Research from './page/Research';
 import Rate from './page/Rate';
 import StartPage from './page/StartPage';
-import { useState, useEffect } from 'react';;
+import { useState, useEffect } from 'react';
 
 function App() {
 
   // const names = ["Cheetah", "Blue Iguana"];
   // const[monkeys, setMonkeys] = useState([]);
   const [animals, setAnimals] = useState([]); //empty array
-  const [mycleanAnimals, setCleanAnimals] = useState([]);
+  // const [mycleanAnimals, setCleanAnimals] = useState([]);
   // function loadAnimals() {
   // for(let i = 0; i < names.length; i++) {
     //console.log(names[i]);
@@ -25,11 +25,11 @@ function App() {
   //     // console.log(data);
   // }
   
-  function cleanAnimals() {
-    let newAnimals = animals.filter((animal) => animal.name != null && animal.locations[0] != null && animal.characteristics.favorite_food != null &&
-    animal.characteristics.predators != null && animal.characteristics.top_speed != null);
-    setCleanAnimals(newAnimals);
-  }
+  // function cleanAnimals() {
+  //   let newAnimals = animals.filter((animal) => animal.name != null && animal.locations[0] != null && animal.characteristics.favorite_food != null &&
+  //   animal.characteristics.predators != null && animal.characteristics.top_speed != null);
+  //   setCleanAnimals(newAnimals);
+  // }
 
   const showAnimals = async ()=>{
       const response = await fetch('https://api.api-ninjas.com/v1/animals?name=' + 
@@ -38,7 +38,7 @@ function App() {
       }});
       const data  = await response.json();
       setAnimals(data);
-      cleanAnimals();
+      // cleanAnimals();
       // console.log(data);
   }
   

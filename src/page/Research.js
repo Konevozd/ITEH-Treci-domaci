@@ -1,7 +1,18 @@
 import ResearchPart from '../components/ResearchPart.jsx';
 import './Research.css'
-
+import { useState, useEffect } from 'react';
 function Research({file}) {
+
+    const [mycleanAnimals, setCleanAnimals] = useState([]);
+    function cleanAnimals() {
+        let newAnimals = file.filter((animal) => animal.name != null && animal.locations[0] != null && animal.characteristics.favorite_food != null &&
+        animal.characteristics.predators != null && animal.characteristics.top_speed != null);
+        setCleanAnimals(newAnimals);
+    }
+
+    useEffect(()=>{
+        cleanAnimals();
+      }, []);
 
     return(
         <div>
@@ -17,7 +28,7 @@ function Research({file}) {
                     </thead>
                     <tbody>
                         {
-                        file.map((animal, key) => (
+                        mycleanAnimals.map((animal, key) => (
                             <tr key = {key}>
                                 <td>{animal.name}</td>
 								<td>{animal.locations[0]}</td>
