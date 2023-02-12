@@ -1,0 +1,20 @@
+.dugmePretraga{
+    color:black;
+    background-color: white;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left:500px;
+    display:flex;
+    flex-direction: row;
+    width: 500px;
+   
+  }
+  
+  .search{
+    margin-right: 10px;
+    font-size: 40px;
+  }
+  .serach:hover{
+    color: rgb(68, 96, 255);
+  }

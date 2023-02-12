@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from "react-router-dom";
 import './NavBar.css'
 
@@ -17,4 +16,4 @@ function NavBar() {
   )
 }
 
-export default NavBar
+export default NavBar;

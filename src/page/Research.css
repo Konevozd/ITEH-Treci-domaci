@@ -1,0 +1,33 @@
+table.tabela{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:20px;
+    margin-bottom:0px;
+    width:60%;
+    font-size: 40px;
+    
+  }
+  
+  th{ 
+    
+    border: 2px solid #0F3460 !important;
+    width:120px;
+    font-size: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+   td, tr, thead{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:120px;
+    text-align:center;
+    border: 2px solid #0F3460 !important;
+    font-size: 20px;
+    color: black !important;
+
+  }
+  tr:hover {
+    background-color: #2C74B3;
+    color:white;
+   }

@@ -11,7 +11,7 @@ function App() {
   // const names = ["Cheetah", "Blue Iguana"];
   // const[monkeys, setMonkeys] = useState([]);
   const [animals, setAnimals] = useState([]); //empty array
-
+  const [mycleanAnimals, setCleanAnimals] = useState([]);
   // function loadAnimals() {
   // for(let i = 0; i < names.length; i++) {
     //console.log(names[i]);
@@ -25,6 +25,12 @@ function App() {
   //     // console.log(data);
   // }
   
+  function cleanAnimals() {
+    let newAnimals = animals.filter((animal) => animal.name != null && animal.locations[0] != null && animal.characteristics.favorite_food != null &&
+    animal.characteristics.predators != null && animal.characteristics.top_speed != null);
+    setCleanAnimals(newAnimals);
+  }
+
   const showAnimals = async ()=>{
       const response = await fetch('https://api.api-ninjas.com/v1/animals?name=' + 
       "mon",{headers: {
@@ -32,9 +38,10 @@ function App() {
       }});
       const data  = await response.json();
       setAnimals(data);
+      cleanAnimals();
       // console.log(data);
   }
-
+  
   useEffect(()=>{
     showAnimals();
   }, []);
@@ -44,9 +51,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path = "/" element = {<StartPage newData = {animals}/>}>  Pocetna strana </Route>
-        <Route path = "/search" element = {<Research file = {animals}/>}> </Route>
-        <Route path = "/rating" element = {<Rate/>}> </Route>
+        <Route path = '/' element = {<StartPage newData = {animals}/>}>  Pocetna strana </Route>
+        <Route path = '/search' element = {<Research file = {animals}/>}> </Route>
+        <Route path = '/rating' element = {<Rate/>}> </Route>
       </Routes>
     </BrowserRouter>
     </div>

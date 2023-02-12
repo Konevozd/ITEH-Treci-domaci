@@ -1,0 +1,26 @@
+.listAnimals {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.listAnimals .card {
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    width: 100%;
+    height:80%;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px #0F3460;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.listAnimals .card h3 {
+    color: #555;
+    margin-bottom: 6px;
+}
